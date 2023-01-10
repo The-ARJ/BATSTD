@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:institute_objectbox/app/routes.dart';
 import 'package:institute_objectbox/app/theme.dart';
-
-import '../screen/splash_screen.dart';
+import 'package:institute_objectbox/screen/login.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -13,7 +12,7 @@ class MyApp extends StatelessWidget {
       title: 'Student course ObjectBox',
       debugShowCheckedModeBanner: false,
       theme: getApplicationThemeData(),
-      initialRoute: SplashScreen.route,
+      initialRoute: LoginScreen.route,
       routes: getAppRoutes,
     );
   }

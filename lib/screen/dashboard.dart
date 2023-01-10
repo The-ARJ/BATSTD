@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:institute_objectbox/screen/bottom_screen/about.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../app/theme.dart';
 import 'bottom_screen/search_student.dart';
@@ -21,6 +22,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
     const SearchStudentScreen(),
     const AboutScreen(),
   ];
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

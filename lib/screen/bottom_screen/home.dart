@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:institute_objectbox/repository/course_repository.dart';
 import 'package:institute_objectbox/screen/batch_student.dart';
 import 'package:institute_objectbox/screen/course_student.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../app/theme.dart';
 import '../../data_source/local_data_source/batch_data_source.dart';
@@ -19,6 +20,15 @@ class _HomeScreenState extends State<HomeScreen> {
     super.initState();
   }
 
+  _removeLoginSession(String key) async {
+    try {
+      final SharedPreferences prefs = await SharedPreferences.getInstance();
+      await prefs.remove(key);
+    } catch (e) {
+      debugPrint(e.toString());
+    }
+  }
+
   final _gap = const SizedBox(height: 8);
   @override
   Widget build(BuildContext context) {
@@ -26,6 +36,13 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         title: const Text('Home Screen'),
         elevation: 5,
+        leading: IconButton(
+          icon: const Icon(Icons.login_rounded),
+          onPressed: () {
+            _removeLoginSession('student');
+            Navigator.pop(context);
+          },
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
